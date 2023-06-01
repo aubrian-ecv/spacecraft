@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, TextInput, Button, TouchableRipple } from 'react-native-paper';
 import { Header } from '../components/Header';
+import ScreenContainer from '../components/ScreenContainer';
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <StatusBar style='auto'/>
       <Header title='spacecraft'/>
       <View style={styles.form}>
@@ -41,7 +42,7 @@ export default function App() {
           <Text>Read Terms and conditions</Text>
         </TouchableRipple>
       </View>
-    </View>
+    </ScreenContainer>
   );
 }
 
