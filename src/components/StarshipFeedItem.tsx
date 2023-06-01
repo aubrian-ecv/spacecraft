@@ -4,17 +4,24 @@ import { Card, Text } from "react-native-paper";
 
 import { useImage } from "../hooks/UseImage";
 
-const StarshipFeedItem = ({ item }: any) => {
-  const image = useImage(item.name);
+interface StarshipFeedItemProps {
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string;
+}
+
+const StarshipFeedItem = (props: StarshipFeedItemProps) => {
+  const { name, model, manufacturer, cost_in_credits } = props;
+  const image = useImage(name);
 
   return (
     <Card mode="contained">
       <Card.Cover source={image} />
-      <Card.Title title={item.name} subtitle={item.model} />
+      <Card.Title title={name} subtitle={model} />
       <Card.Content>
-        <Text variant="bodyMedium">{item.crew}</Text>
-        <Text variant="bodyMedium">{item.hyperdrive_rating}</Text>
-        <Text variant="bodyMedium">{item.cost_in_credits}</Text>
+        <Text variant="bodyMedium">{manufacturer}</Text>
+        <Text variant="bodyMedium">{cost_in_credits}</Text>
       </Card.Content>
     </Card>
   );
