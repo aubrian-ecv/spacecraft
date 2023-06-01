@@ -7,12 +7,10 @@ import StarshipFeedItem from "../components/StarshipFeedItem";
 export const StarshipFeedScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <FlatList 
+      <FlatList 
             data={data.results}
             renderItem={StarshipFeedItem}
         />
-      </View>
     </View>
   );
 };
