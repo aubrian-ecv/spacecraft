@@ -2,11 +2,16 @@ import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 
 import LoginScreen from './src/screens/LoginScreen';
+import { TermsScreen } from './src/screens/TermsScreen';
+import { ScrollView } from 'react-native';
 
 const App = () => {
   return (
     <PaperProvider>
-      <LoginScreen />
+        <ScrollView>
+            <LoginScreen />
+            <TermsScreen />
+        </ScrollView>
     </PaperProvider>
   );
 };

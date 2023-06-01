@@ -20,14 +20,14 @@ export default function App() {
       <Header title='spacecraft'/>
       <View style={styles.form}>
         <TextInput 
-          placeholder='Email'
+          label='Email'
           style={styles.input}
           value={email}
           onChangeText={(value) => {setEmail(value)}}
           keyboardType='email-address'
         />
         <TextInput 
-          placeholder='Password'
+          label='Password'
           style={styles.input}
           value={password}
           onChangeText={(value) => {setPassword(value)}}
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   form: {
-    flex: 2,
     width: '100%',
     padding: 20
   },

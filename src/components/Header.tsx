@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    height: 250
   },
   title: {
     textTransform: 'uppercase',
