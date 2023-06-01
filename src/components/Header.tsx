@@ -18,15 +18,15 @@ export const Header = ({ title }: HeaderProps) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'purple',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 250
+    backgroundColor: "purple",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 250,
   },
   title: {
-    textTransform: 'uppercase',
-    color: 'white',
-    fontWeight: '700'
+    textTransform: "uppercase",
+    color: "white",
+    fontWeight: "700",
   },
 });
