@@ -4,9 +4,9 @@ import { Text } from 'react-native-paper';
 
 import { default as data } from "../../api/data.json";
 import StarshipFeedItem from "../components/StarshipFeedItem";
-import ScreenContainer from "../components/ScreenContainer";
 import { useStarships } from "../hooks/UseStarships";
 import { Placeholder, PlaceholderMedia, PlaceholderLine, ShineOverlay  } from "rn-placeholder";
+import { Offline } from "../components/Offline";
 
 export const StarshipFeedScreen = () => {
 
@@ -18,27 +18,27 @@ export const StarshipFeedScreen = () => {
     
     if (starships.status === 'loading') {
         return (
-                <ScrollView
-                    contentContainerStyle={styles.container}
-                >
-                    <LoadingItem />
-                    <LoadingItem />
-                    <LoadingItem />
-                </ScrollView>
+            <ScrollView
+                contentContainerStyle={styles.container}
+            >
+                <LoadingItem />
+                <LoadingItem />
+                <LoadingItem />
+            </ScrollView>
         )
     }
 
     if (starships.status === 'error') {
         return (
-            <ScreenContainer additionalStyle={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <Image source={{uri: 'https://media.tenor.com/72JAs1HY9bkAAAAd/space-ship-crash.gif'}} style={{width: '100%', height: 200, resizeMode: 'contain'}}/>
                 <Text variant="headlineMedium"> Error </Text>
-            </ScreenContainer>
+            </View>
         )
     }
 
     return (
-        <ScreenContainer additionalStyle={styles.container}>
+        <View style={styles.container}>
             <FlatList 
                 data={data.results}
                 renderItem={({item, index}) => <StarshipFeedItem key={item.name + '-' + index} item={item} />}
@@ -50,8 +50,9 @@ export const StarshipFeedScreen = () => {
                         onRefresh={starships.refetch}
                     />
                 }
+                ListHeaderComponent={<Offline />}
             />
-        </ScreenContainer>
+        </View>
     );
 };
 

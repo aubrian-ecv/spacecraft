@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, TextInput, Button, TouchableRipple } from 'react-native-paper';
 import { Header } from '../components/Header';
-import ScreenContainer from '../components/ScreenContainer';
+import { ScreenContainer } from '../components/ScreenContainer';
 
 export default function App() {
 
@@ -16,7 +16,7 @@ export default function App() {
   }
 
   return (
-    <ScreenContainer>
+    <ScreenContainer title='Login Screen'>
       <StatusBar style='auto'/>
       <Header title='spacecraft'/>
       <View style={styles.form}>
