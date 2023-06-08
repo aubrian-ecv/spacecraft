@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+steps:
+  - name: Expo Web
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    uses: expo/expo-github-action@v5
+    with:
+      expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+      expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      expo-cache: true
+
+  - name: Install dependencies
+    if: steps.yarn-cache.outputs.cache-hit != 'true' && (github.event_name == 'push' || github.event_name == 'pull_request')
+    run: yarn
+
+  - name: 📦 Build Expo Web
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    working-directory: ./packages/app
+    run: expo build:web
+
+  - name: 📦 Vercel Deploy
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    uses: amondnet/vercel-action@v20.0.0
+    with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      scope: TEAM
