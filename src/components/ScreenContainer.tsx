@@ -7,22 +7,23 @@ import { Text } from "react-native-paper";
 
 interface ScreenContainerProps {
   title: string;
+  optionalStyle?: object;
   children?: ReactNode;
   withSeparatorFooter?: boolean;
 }
 
 export const ScreenContainer = ({
   title,
+  optionalStyle,
   children,
   withSeparatorFooter = false,
 }: ScreenContainerProps) => {
   return (
-    <ScrollView style={styles.container} nestedScrollEnabled={true}>
+    <ScrollView
+      style={[styles.container, optionalStyle]}
+      nestedScrollEnabled={true}
+    >
       {/* <Offline /> */}
-      <Text variant="headlineMedium" style={styles.headerText}>
-        {title}
-      </Text>
-
       {children}
       {withSeparatorFooter && <View style={styles.footer} />}
     </ScrollView>
@@ -32,12 +33,8 @@ export const ScreenContainer = ({
 const styles = StyleSheet.create({
   container: {
     paddingTop: 24,
-    paddingHorizontal: 24,
+    paddingHorizontal: 0,
     marginTop: 36,
-  },
-  headerText: {
-    fontWeight: "bold",
-    marginBottom: 20,
   },
   footer: {
     paddingBottom: 256,

@@ -1,16 +1,19 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Image, Alert } from "react-native";
+import { View, Image, ScrollView } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 
 export const TermsScreen = () => {
+  const navigation = useNavigation();
+
   function goBack() {
     // We need to use the screen props `{navigation}` to navigate back
     // it will be introduced in the next lesson `react-navigation`
-    Alert.alert("goBack pressed!");
+    navigation.goBack();
   }
 
   return (
-    <View>
+    <ScrollView>
       <Appbar.Header>
         <Appbar.BackAction onPress={goBack} />
         <Appbar.Content title="Terms and Conditions" />
@@ -103,6 +106,6 @@ export const TermsScreen = () => {
 
         <Text style={{ marginBottom: 128 }}>May the force be with you</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };

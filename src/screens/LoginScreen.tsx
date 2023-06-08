@@ -2,14 +2,18 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, TextInput, Button, TouchableRipple } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import { Header } from "../components/Header";
 import { ScreenContainer } from "../components/ScreenContainer";
+import { Routes } from "../navigation/Routes";
 
 export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigation = useNavigation();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -47,7 +51,7 @@ export default function App() {
         <Button mode="contained-tonal">Login</Button>
         <TouchableRipple
           onPress={() => {
-            console.log("J'ai lu");
+            navigation.navigate(Routes.TERMS_SCREEN);
           }}
           style={styles.terms}
         >
