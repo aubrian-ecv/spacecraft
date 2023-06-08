@@ -10,7 +10,8 @@
       "developmentClient": true,
       "env": {
         "APP_VARIANT": "development"
-      }
+      },
+      "distribution": "internal"
     },
     "preview": {
       "distribution": "internal"
