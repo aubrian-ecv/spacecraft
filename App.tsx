@@ -7,6 +7,7 @@ import { NetworkProvider } from "react-native-offline";
 import LoginScreen from "./src/screens/LoginScreen";
 import { TermsScreen } from "./src/screens/TermsScreen";
 import { StarshipFeedScreen } from "./src/screens/StarshipFeedScreen";
+import StorybookUIRoot from "./.storybook";
 
 const queryClient = new QueryClient();
 
@@ -27,5 +28,8 @@ const App = () => {
   );
 };
 
+const SHOW_STORYBOOK = false;
+
+const UI = SHOW_STORYBOOK && __DEV__ ? StorybookUIRoot : App;
 // eslint-disable-next-line import/no-default-export
-export default App;
+export default UI;
