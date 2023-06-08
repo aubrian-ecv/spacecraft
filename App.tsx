@@ -5,18 +5,21 @@ import { NetworkProvider } from "react-native-offline";
 
 import StorybookUIRoot from "./.storybook";
 import { Navigator } from "./src/navigation/Navigator";
+import { AuthenticationProvider } from "./src/context/Authentication";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <PaperProvider>
-      <QueryClientProvider client={queryClient}>
-        <NetworkProvider>
-          <Navigator />
-        </NetworkProvider>
-      </QueryClientProvider>
-    </PaperProvider>
+    <AuthenticationProvider>
+      <PaperProvider>
+        <QueryClientProvider client={queryClient}>
+          <NetworkProvider>
+            <Navigator />
+          </NetworkProvider>
+        </QueryClientProvider>
+      </PaperProvider>
+    </AuthenticationProvider>
   );
 };
 

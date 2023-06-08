@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components/Header";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Routes } from "../navigation/Routes";
+import { useAuthentication } from "../context/Authentication";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -15,8 +16,14 @@ export default function App() {
 
   const navigation = useNavigation();
 
+  const { setUser } = useAuthentication();
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
+    setUser(true);
   };
 
   return (
@@ -48,7 +55,9 @@ export default function App() {
             />
           }
         />
-        <Button mode="contained-tonal">Login</Button>
+        <Button mode="contained-tonal" onPress={handleLogin}>
+          Login
+        </Button>
         <TouchableRipple
           onPress={() => {
             navigation.navigate(Routes.TERMS_SCREEN);
